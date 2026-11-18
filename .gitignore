@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.log
+storage/
+
+*.db
+*.db-shm
+*.db-wal
+bin/*.exe
+
+# PyInstaller build outputs
+build/
+dist/
+*.spec
