@@ -714,7 +714,7 @@ class TunnelManagerApp(ctk.CTk):
             return entry
 
         self.setting_entries = {}
-        self.setting_entries["cloudflared_path"] = entry_field(0, "cloudflared.exe path", "cloudflared_path", "Contoh: D:\\Coding\\CLOUDFLARE\\cloudflared.exe")
+        self.setting_entries["cloudflared_path"] = entry_field(0, "cloudflared.exe path", "cloudflared_path", "Contoh: bin\\cloudflared.exe atau path ke cloudflared.exe")
         ctk.CTkButton(scroll, text="Browse", width=75, command=lambda: self._browse_into(self.setting_entries["cloudflared_path"], file=True)).grid(row=0, column=2, padx=(0, 16), pady=9)
         ctk.CTkLabel(scroll, text="Cloudflare API", font=ctk.CTkFont(size=15, weight="bold")).grid(row=1, column=0, columnspan=3, sticky="w", padx=16, pady=(18, 4))
         for row, label, key, placeholder in [

@@ -29,40 +29,59 @@ Unduh Cloudflared hanya dari:
 
 Letakkan executable di `bin/cloudflared.exe`, atau isi path lengkap melalui **Settings**. Binary Cloudflared tidak disertakan di ZIP ini.
 
-## 2. Cara Menjalankan
+## 2. Setup dan Cara Menjalankan
 
-### Cara 1: Jalankan Tanpa Jendela CMD (Rekomendasi)
-- Cukup double-click file **`run_gui.vbs`** (atau jalankan **`tunnel.bat`**).
-- `tunnel.bat` akan menjalankan aplikasi via `pythonw.exe` di background dan jendela command prompt akan langsung tertutup otomatis.
+> **Catatan Lokasi Folder (Path)**:
+> Anda dapat mengekstrak atau menaruh project ini di folder mana saja (Drive `C:`, `D:`, atau folder `Downloads`/`Documents`). Path `D:\Coding\...` di bawah hanyalah contoh ilustrasi.
 
-### Cara 2: Manual via Terminal
+---
+
+### Langkah 1: Setup Otomatis (Cukup Double-Click)
+Cukup jalankan file:
+```text
+setup.bat
+```
+Script `setup.bat` memiliki **Smart Python Detection**:
+- Otomatis mendeteksi perintah `python`, `py -3`, atau `py` versi 3.8+ yang ada di sistem Anda.
+- Jika Python belum terdeteksi (misal karena lupa mencentang "Add to PATH" atau terhalang alias Windows Store), script akan memberikan instruksi perbaikan yang mudah dipahami.
+- Otomatis membuat virtual environment (`.venv`) dan menginstall dependencies.
+
+---
+
+### Langkah 2: Menjalankan Aplikasi
+
+#### Cara A: Tanpa Jendela CMD (Rekomendasi)
+- Cukup double-click file **`run_gui.vbs`** (atau **`tunnel.bat`** / **`run.bat`**).
+- Jendela command prompt hitam akan tertutup secara otomatis seketika, dan GUI akan berjalan lancar di background.
+
+#### Cara B: Manual via Terminal
+Jika ingin menjalankan lewat terminal, buka CMD di folder tempat Anda mengekstrak project:
 ```bat
-cd /d D:\Coding\CLOUDFLARE
-py -3.11 -m venv .venv
+cd /d "C:\path\ke\folder\ekstrak\kamu"
 .venv\Scripts\activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
 python main.py
 ```
 
-### Cara 3: Build Menjadi Standalone EXE (No Console / Windowed)
+#### Cara C: Build Menjadi Standalone EXE (Tanpa Perlu Python)
 Jalankan file batch:
 ```bat
 build_exe.bat
 ```
 Script ini akan mem-package aplikasi menggunakan PyInstaller dengan mode `--noconsole` / `--windowed`. Hasil build ada di `dist\CloudflareTunnelManager\CloudflareTunnelManager.exe` dan saat dibuka tidak akan memunculkan jendela hitam `cmd.exe` sama sekali.
 
+---
+
 ## 3. Tambahkan Project dan Service
 
 1. Buka **Projects & Services**.
-2. Klik **Add Project** dan pilih folder project.
+2. Klik **Add Project** dan pilih folder project Anda.
 3. Klik **Add Service**.
 4. **Pilih template dari dropdown "Quick Preset"** (Tersedia Laravel, React/Vite, Next.js, FastAPI, Express, Django, Flask, Go, .NET Core) atau isi manual.
 5. Pilih **Working directory** dan sesuaikan port jika perlu, lalu klik **Save Service**.
 6. Klik **Start** untuk menjalankan service.
 
 > **Panduan Lengkap Semua Framework (Frontend & Backend)**:
-> Lihat panduan best practice lengkap di [docs/JSON_ARRAY_BEST_PRACTICE.md](file:///d:/Coding/CLOUDFLARE/docs/JSON_ARRAY_BEST_PRACTICE.md).
+> Lihat panduan best practice lengkap di [docs/JSON_ARRAY_BEST_PRACTICE.md](docs/JSON_ARRAY_BEST_PRACTICE.md).
 
 ### Contoh Laravel
 - **Quick Preset**: Pilih `Laravel (PHP Artisan)`
